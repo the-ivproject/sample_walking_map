@@ -3,7 +3,7 @@ const data = [
 	{
 		place: 'Koenraad',
 		coord: [52.09412601996657, 5.118930974598105],
-		image: 'img/koendraad.jpg',
+		image: '../examples/img/koendraad.jpg',
 		building: 'Voorstraat 14',
 		ig: '@koenraad_utrecht',
 		description1: `You won't find any fuss at Koenraad, because here they go back to the basic of good and pure food. 
@@ -16,7 +16,7 @@ const data = [
 	{
 		place: 'The Streetfood Club',
 		coord: [52.093005462934606, 5.122074096180487],
-		image: 'img/The Streetfood Club.jpeg',
+		image: '../examples/img/The Streetfood Club.jpeg',
 		building: 'Janskerkhof 9',
 		ig: '@thestreetfoodclub',
 		description1: `From no fuss to extremely hip. The Streetfood Club is the hotspot in Utrecht at the Janskerkhof. Everything has been thought of and every corner is Insta-worthy. There is a luxurious cocktail bar with a DJ, an urban jungle and a bright pink room. But the food has also been well thought out. `,
@@ -25,7 +25,7 @@ const data = [
 	{
 		place: 'Cerveceria Boulevard',
 		coord: [52.08947054035109, 5.135407084543179],
-		image: 'img/cerveceria boulevard.jpg',
+		image: '../examples/img/cerveceria boulevard.jpg',
 		building: 'Burgemeester Reigerstraat 45',
 		ig: '@cerveceriaboulevard',
 		description1: `At Cerveceria Boulevard you can enjoy Spanish delicacies in a Basque way in a warm, light and Mediterranean vibe. 
@@ -37,7 +37,7 @@ const data = [
 	{
 		place: 'Vegitalian',
 		coord: [52.092918262960346, 5.1193295268707475],
-		image: 'img/Vegitalian.jpeg',
+		image: '../examples/img/Vegitalian.jpeg',
 		building: 'Schoutenstraat 17',
 		ig: '@vegitalian.nl',
 		description1: `‘‘A tavola non si invecchia’. This beautiful Italian saying means: "you don't get old at the table". With good company and good food, you
@@ -54,7 +54,7 @@ const data = [
 	{
 		place: 'Ruby Rose',
 		coord: [52.09288364620955, 5.122015711525638],
-		image: 'img/Ruby Rose.jpg',
+		image: '../examples/img/Ruby Rose.jpg',
 		building: 'Korte Jansstraat 23',
 		ig: '@rubyroseutrecht',
 		description1: `Ruby Rose is a wine and food bar with an amazing interior. Lots of

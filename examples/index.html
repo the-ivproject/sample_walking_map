@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leaflet OSRM Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../css/style.css"> <!-- Resource style -->
+	<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="../dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="index.css" />
+    
+</head>
+
+<style>
+    .new-hr-line {
+        border-top: 1px solid #ededed;width: 100%;margin:20px 0;
+    }
+</style>
+
+<body>
+    <div id="map" class="map"></div>
+    <main>
+            <div id="imgcontainer" class="cd-image-block">
+                <ul id="img-list" class="cd-images-list">
+                    <li class="is-selected">
+                        <a href="#0">
+                            <img src="img/koendraad.jpg" alt="" class="src">
+                        </a>
+                    </li>
+                </ul> 
+            </div>
+    
+            <div class="cd-content-block">
+                <ul id="content-list">
+                    <li class="is-selected">
+                        <div>
+                            <h2>Koenraad 
+                                <span> 
+                                    <button class="play" id="speech0" style="float: right;"><i class="fa fa-play-circle-o" style="font-size:28px;color:red"></i></button>
+                                    <button class="defhide" id="pause0" style="float: right;"><i class="fa fa-pause-circle-o" style="font-size:28px;color:red"></i></button>
+                                    <button class="defhide" id="stop0" style="float: right;"><i class="fa fa-stop-circle-o" style="font-size:28px;color:red"></i></button>
+                                </span>
+                            </h2>
+                           
+                            <ul class='icon-text'>
+                                <li><i class="fas fa-map-marker-alt" style='font-size:12px;color:red;vertical-align: middle;'></i> Voorstraat 14</li>
+                                <li><i class="fab fa-instagram" style='font-size:12px;color:#C13584;vertical-align: middle;'></i> @koenraad_utrecht</li>
+                            </ul>
+                            
+                            <div class="new-hr-line"></div>
+                            <p id="p0">
+                                You won't find any fuss at Koenraad, because here they go back to the basic of good and pure food. 
+                                No hypes and trends, but above all just a good night out with the best food and fine wines. 
+                                Koenraad has been on the Voorstraat since 2019 and is therefore still fairly new in Utrecht. 
+                                Ingredients and also the drinks are locally sourced, and the service ensures that you have a night out as it should be.                            </p>
+                            
+                            <p id="pp0">
+                                When they can open indoors, you can also have a drink there and eat at the bar. Or even at the cosy fireplace. 
+                                Like we said, no fuss! And did you know Koenraad even has real Utrecht specialties on the menu?</p>                            
+                        </div> 
+                    </li>
+                </ul>
+                <button class="cd-close">Close</button>
+            </div> <!-- .cd-content-block -->
+    
+
+		<ul class="block-navigation">
+			<li><button class="cd-prev inactive">&larr; Prev</button></li>
+			<li><button class="cd-next">Next &rarr;</button></li>
+		</ul> <!-- .block-navigation -->
+	</main>	<!-- .cd-main -->
+
+    <script src="../js/jquery-2.1.4.js"></script>
+    <script src="../js/slider.js"></script> <!-- Resource jQuery -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="../dist/leaflet-routing-machine.js"></script>
+    <script src="Control.Geocoder.js"></script>
+    <script src="config.js"></script>
+    <script src="index.js"></script>
+    <script src="https://kit.fontawesome.com/62e6ae1a09.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>
