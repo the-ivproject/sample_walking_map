@@ -236,7 +236,7 @@ Content block
   display: block;
   font-size: 12px;
   font-family: 'Inter',sans-serif;
-  font-weight: 500;
+  /* font-weight: 500; */
   font-style: normal;
   color: #000;
 }
@@ -248,6 +248,9 @@ Content block
   font-size: 12px;
 }
 
+.defhide {
+  display: none;
+}
 
 .cd-content-block .cd-close {
   /* 'X' icon to close the content block -  mobile only */
@@ -444,8 +447,8 @@ Slider navigation
     display: block;
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 50%;
+    right: 0;
+    width: 60%;
   }
 
   .block-navigation::after {

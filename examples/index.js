@@ -11,7 +11,7 @@ const data = [
 		Koenraad has been on the Voorstraat since 2019 and is therefore still fairly new in Utrecht. 
 		Ingredients and also the drinks are locally sourced, and the service ensures that you have a night out as it should be.`,
 		description2: `When they can open indoors, you can also have a drink there and eat at the bar. Or even at the cosy fireplace. Like we said, no fuss! And did you know Koenraad even has real Utrecht specialties on the menu?,
-		` 
+		`
 	},
 	{
 		place: 'The Streetfood Club',
@@ -50,7 +50,7 @@ const data = [
 		ingredients as much as possible. Many people take small steps.
 		Vegitalian believes that this determines the future! And we believe in
 		Vegitalian.`,
-	}, 
+	},
 	{
 		place: 'Ruby Rose',
 		coord: [52.09288364620955, 5.122015711525638],
@@ -74,53 +74,15 @@ const data = [
 		something that you definitely see in the interior. So pop those bottles
 		next time you’re there and celebrate life!
 		`,
-	
+
 	}
 ]
 
-
 const map = L.map('map');
 
-for(let i = 1; i < data.length; i++) {
-
-	let li = document.createElement('li')
-	let a = document.createElement('a')
-	let img = document.createElement('img')
-	img.src = data[i].image
-
-	a.appendChild(img)
-	li.appendChild(a)
-
-
-	document.getElementById('img-list').appendChild(li)
-	let linew = document.createElement('li')
-	let div = document.createElement('div')
-	let h2 = document.createElement('h2')
-	h2.innerHTML =  data[i].place
-
-	let ul = document.createElement('ul')
-	ul.className = 'icon-text'
-
-	let li2 = document.createElement('li')
-	li2.innerHTML = `<i class="fas fa-map-marker-alt" style='font-size:12px;color:red;vertical-align: middle;'></i>${data[i].building}
-	<i class="fab fa-instagram" style='font-size:12px;color:#C13584;vertical-align: middle;'></i>${data[i].ig}`
-	
-	ul.appendChild(li2)
-
-	let p1 = document.createElement('p')
-	p1.innerHTML = data[i].description1
-	let p2 = document.createElement('p')
-	p2.innerHTML = data[i].description2
-
-	div.appendChild(h2)
-	div.appendChild(ul)
-	div.appendChild(p1)
-	div.appendChild(p2)
-
-	linew.appendChild(div)
-	document.getElementById('content-list').appendChild(linew)
-
-}
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 let createLatLng = point => {
 	let stacks = []
@@ -130,9 +92,6 @@ let createLatLng = point => {
 	return stacks
 }
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
 
 let control = L.Routing.control(L.extend(window.lrmConfig, {
 	waypoints: createLatLng(data),
@@ -150,3 +109,72 @@ let control = L.Routing.control(L.extend(window.lrmConfig, {
 })).addTo(map);
 
 L.Routing.errorControl(control).addTo(map);
+
+let contentList = (list) => {
+	for (let i = 1; i < list.length; i++) {
+		// Image section
+		let imgList = document.createElement('li')
+		let elImg = `
+					<a>
+						<img src="${list[i].image}" alt="" class="src">
+					</a>
+					`
+		imgList.innerHTML = elImg
+		document.getElementById('img-list').appendChild(imgList)
+
+		// Description section
+		let contentList = document.createElement('li')
+
+		let elContent = `
+						<div>
+							<h2> ${data[i].place} 
+								<span>
+									<button class="play" id="speech${i}" style="float: right;"><i class="fa fa-play-circle-o" style="font-size:28px;color:red"></i></button> 
+									<button class="play" id="pause${i}" style="float: right;"><i class="fa fa-pause-circle-o" style="font-size:28px;color:red"></i></button>
+									<button class="play" id="stop${i}" style="float: right;"><i class="fa fa-stop-circle-o" style="font-size:28px;color:red"></i></button>
+								</span>
+							</h2>
+							<ul class='icon-text'>
+								<li><i class="fas fa-map-marker-alt" style='font-size:12px;color:red;vertical-align: middle;'></i> ${data[i].building}</li>
+								<li><i class="fab fa-instagram" style='font-size:12px;color:#C13584;vertical-align: middle;'></i> ${data[i].ig}</li>
+							</ul>
+							<div class="new-hr-line"></div>
+							<p id="p${i}">
+								${data[i].description1}
+							</p>
+							<p id="pp${i}">
+								${data[i].description2}
+							</p>                         
+						</div> 
+						`
+		contentList.innerHTML = elContent
+		document.getElementById('content-list').appendChild(contentList)
+	}
+}
+
+contentList(data)
+
+let speech = () => {
+	let ul = document.getElementById('content-list')
+	let query = ul.querySelectorAll('button')
+	
+	for(let i = 0; i < query.length; i++) {
+
+		let existBtn = document.getElementById(`speech${i}`)
+		let pauseBtn= document.getElementById(`pause${i}`)
+		let stopBtn= document.getElementById(`stop${i}`)
+
+		existBtn.onclick = function() {
+			let p1 = document.getElementById(`p${i}`)
+			let p2 = document.getElementById(`pp${i}`)
+
+			let text = p1.innerHTML +'    '+ p2.innerHTML
+
+			existBtn.style.display = 'none'
+			pauseBtn.style.display = 'block'
+			stopBtn.style.display = 'block'
+		}
+	}
+}
+
+speech()
