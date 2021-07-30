@@ -130,8 +130,8 @@ let contentList = (list) => {
 							<h2> ${data[i].place} 
 								<span>
 									<button class="play" id="speech${i}" style="float: right;"><i class="fa fa-play-circle-o" style="font-size:28px;color:red"></i></button> 
-									<button class="play" id="pause${i}" style="float: right;"><i class="fa fa-pause-circle-o" style="font-size:28px;color:red"></i></button>
-									<button class="play" id="stop${i}" style="float: right;"><i class="fa fa-stop-circle-o" style="font-size:28px;color:red"></i></button>
+									<button class="play" id="pause${i}" style="float: right;display:none"><i class="fa fa-pause-circle-o" style="font-size:28px;color:red"></i></button>
+									<button class="play" id="stop${i}" style="float: right;display:none"><i class="fa fa-stop-circle-o" style="font-size:28px;color:red"></i></button>
 								</span>
 							</h2>
 							<ul class='icon-text'>
@@ -154,6 +154,15 @@ let contentList = (list) => {
 
 contentList(data)
 
+let naratorVoice = (text) => {
+	let msg = new SpeechSynthesisUtterance();
+
+	msg.lang = 'en'
+	msg.text = text;
+
+	window.speechSynthesis.speak(msg);
+}
+
 let speech = () => {
 	let ul = document.getElementById('content-list')
 	let query = ul.querySelectorAll('button')
@@ -164,7 +173,7 @@ let speech = () => {
 		let pauseBtn= document.getElementById(`pause${i}`)
 		let stopBtn= document.getElementById(`stop${i}`)
 
-		existBtn.onclick = function() {
+		existBtn.addEventListener('click', function(){
 			let p1 = document.getElementById(`p${i}`)
 			let p2 = document.getElementById(`pp${i}`)
 
@@ -173,8 +182,42 @@ let speech = () => {
 			existBtn.style.display = 'none'
 			pauseBtn.style.display = 'block'
 			stopBtn.style.display = 'block'
-		}
+			
+			naratorVoice(text)
+		})
+
+		pauseBtn.addEventListener('click', function(){
+			window.speechSynthesis.pause();
+
+			existBtn.style.display = 'block'
+			pauseBtn.style.display = 'block'
+			stopBtn.style.display = 'none'
+		})
+
+		stopBtn.addEventListener('click', function(){
+			window.speechSynthesis.pause();
+
+			existBtn.style.display = 'block'
+			pauseBtn.style.display = 'none'
+			stopBtn.style.display = 'none'
+		})
 	}
 }
+
+// let pauseSpeech = () => {
+// 	for(let i = 0; i < query.length; i++) {
+
+// 		let existBtn = document.getElementById(`speech${i}`)
+// 		let pauseBtn= document.getElementById(`pause${i}`)
+// 		let stopBtn= document.getElementById(`stop${i}`)
+
+// 		pauseBtn.onclick = function() {
+// 			window.speechSynthesis.pause();
+// 			existBtn.style.display = 'block'
+// 			pauseBtn.style.display = 'none'
+// 			stopBtn.style.display = 'none'
+// 		}
+// 	}
+// }
 
 speech()

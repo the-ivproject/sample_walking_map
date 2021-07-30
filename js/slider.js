@@ -1,3 +1,6 @@
+
+
+
 jQuery(document).ready(function($){
 	//store DOM elements
 	var imageWrapper = $('.cd-images-list'),
